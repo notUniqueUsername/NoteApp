@@ -11,9 +11,9 @@ namespace NoteApp
     /// </summary>
     public class Note : ICloneable
     {
-        //private string _name;
-        //private NoteCategory _noteCategory;
-        //private string _noteText;
+        private string _name;
+        private NoteCategory _noteCategory;
+        private string _noteText;
 
         /// <summary>
         /// Время создания
@@ -32,13 +32,13 @@ namespace NoteApp
         {
             set
             {
-                Name = value;
+                _name = value;
                 TimeChange = DateTime.Now;
             }
 
             get
             {
-                return Name;
+                return _name;
             }
         }
 
@@ -49,13 +49,13 @@ namespace NoteApp
         {
             set
             {
-                NoteCategory = value;
+                _noteCategory = value;
                 TimeChange = DateTime.Now;
             }
 
             get
             {
-                return NoteCategory;
+                return _noteCategory;
             }
         }
 
@@ -66,13 +66,13 @@ namespace NoteApp
         {
             set
             {
-                NoteText = value;
+                _noteText = value;
                 TimeChange = DateTime.Now;
             }
 
             get
             {
-                return NoteText;
+                return _noteText;
             }
         }
 
