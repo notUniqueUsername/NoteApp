@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
-    class Project
+    public class Project
     {
+        public List<Note> NoteList { private set; get; }
+
+        public Project(List<Note> NoteList)
+        {
+            this.NoteList = NoteList;
+        }
     }
 }

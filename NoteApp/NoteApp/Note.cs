@@ -6,17 +6,106 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
+    /// <summary>
+    /// Класс заметок
+    /// </summary>
     public class Note : ICloneable
     {
-        private string _name;
-        private NoteCategory _noteCategory;
-        private string _noteText;
-        private DateTime _timeChange;
-        private DateTime _timeCreate;
+        //private string _name;
+        //private NoteCategory _noteCategory;
+        //private string _noteText;
+
+        /// <summary>
+        /// Время создания
+        /// </summary>
+        public DateTime TimeCreate { private set; get; }
+
+        /// <summary>
+        /// Время последнего изменения
+        /// </summary>
+        public DateTime TimeChange { private set; get; }
+
+        /// <summary>
+        /// Название заметки
+        /// </summary>
+        public string Name
+        {
+            set
+            {
+                Name = value;
+                TimeChange = DateTime.Now;
+            }
+
+            get
+            {
+                return Name;
+            }
+        }
+
+        /// <summary>
+        /// Категория заметки
+        /// </summary>
+        public NoteCategory NoteCategory
+        {
+            set
+            {
+                NoteCategory = value;
+                TimeChange = DateTime.Now;
+            }
+
+            get
+            {
+                return NoteCategory;
+            }
+        }
+
+        /// <summary>
+        /// Текст заметки
+        /// </summary>
+        public string NoteText
+        {
+            set
+            {
+                NoteText = value;
+                TimeChange = DateTime.Now;
+            }
+
+            get
+            {
+                return NoteText;
+            }
+        }
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="NoteText">
+        /// Текст заметки
+        /// </param>
+        /// <param name="NoteCategory">
+        /// Категория заметки
+        /// </param>
+        /// <param name="Name">
+        /// Имя заметки
+        /// </param>
+        public Note(string NoteText, NoteCategory NoteCategory, string Name = "Без названия")
+        {
+            TimeCreate = DateTime.Now;
+            if (Name.Length <= 50)
+            {
+                this.Name = Name;
+            }
+            else
+            {
+                throw new ArgumentException("Название заметки длиннее 50 символов");
+            }
+            this.NoteCategory = NoteCategory;
+            this.NoteText = NoteText;
+        }
 
         public object Clone()
         {
-            return 1;
+            return (Note) this.MemberwiseClone();
         }
     }
 }
