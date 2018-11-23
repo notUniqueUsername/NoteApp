@@ -1,5 +1,4 @@
-﻿using NoteApp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NoteApp;
 
 namespace NoteAppUI
 {
@@ -16,6 +16,10 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
+            this.NoteCategoryComboBox.DataSource = Enum.GetNames(typeof(NoteCategory));
+            #if !DEBUG
+            this.TestButton.Visible = false;
+            #endif
         }
 
         /// <summary>
@@ -40,5 +44,12 @@ namespace NoteAppUI
                 MessageBox.Show(item.Name + ' ' + item.NoteCategory + ' ' + item.NoteText + ' ' + item.TimeCreate);
             }
         }
+
+        private void AddPictureBox_Click(object sender, EventArgs e)
+        {
+            var addChangeForm = new AddChangeForm();
+            addChangeForm.ShowDialog();
+        }
+
     }
 }
