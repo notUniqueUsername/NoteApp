@@ -51,5 +51,10 @@ namespace NoteAppUI
             addChangeForm.ShowDialog();
         }
 
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new AboutForm();
+            about.Show();
+        }
     }
 }

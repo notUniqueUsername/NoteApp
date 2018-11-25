@@ -133,15 +133,16 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // TestButton
             // 
             this.TestButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TestButton.Location = new System.Drawing.Point(215, 89);
+            this.TestButton.Location = new System.Drawing.Point(215, 157);
             this.TestButton.MaximumSize = new System.Drawing.Size(99, 32);
             this.TestButton.MinimumSize = new System.Drawing.Size(99, 32);
             this.TestButton.Name = "TestButton";
@@ -193,7 +194,7 @@
             this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(73, 27);
             this.CategoryLabel.TabIndex = 0;
-            this.CategoryLabel.Text = "Категория";
+            this.CategoryLabel.Text = "Category:";
             this.CategoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NoteCategoryComboBox
@@ -358,9 +359,9 @@
             this.TimeCreatedLabel.AutoSize = true;
             this.TimeCreatedLabel.Location = new System.Drawing.Point(3, 0);
             this.TimeCreatedLabel.Name = "TimeCreatedLabel";
-            this.TimeCreatedLabel.Size = new System.Drawing.Size(35, 32);
+            this.TimeCreatedLabel.Size = new System.Drawing.Size(44, 32);
             this.TimeCreatedLabel.TabIndex = 0;
-            this.TimeCreatedLabel.Text = "label2";
+            this.TimeCreatedLabel.Text = "Created";
             // 
             // TimeChangedLabel
             // 
@@ -368,11 +369,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TimeChangedLabel.AutoSize = true;
-            this.TimeChangedLabel.Location = new System.Drawing.Point(190, 0);
+            this.TimeChangedLabel.Location = new System.Drawing.Point(189, 0);
             this.TimeChangedLabel.Name = "TimeChangedLabel";
-            this.TimeChangedLabel.Size = new System.Drawing.Size(35, 32);
+            this.TimeChangedLabel.Size = new System.Drawing.Size(47, 32);
             this.TimeChangedLabel.TabIndex = 1;
-            this.TimeChangedLabel.Text = "label2";
+            this.TimeChangedLabel.Text = "Modified";
             // 
             // TimeCreatedComboBox
             // 
@@ -380,7 +381,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TimeCreatedComboBox.Enabled = false;
             this.TimeCreatedComboBox.FormattingEnabled = true;
-            this.TimeCreatedComboBox.Location = new System.Drawing.Point(44, 3);
+            this.TimeCreatedComboBox.Location = new System.Drawing.Point(53, 3);
             this.TimeCreatedComboBox.Name = "TimeCreatedComboBox";
             this.TimeCreatedComboBox.Size = new System.Drawing.Size(121, 21);
             this.TimeCreatedComboBox.TabIndex = 2;
@@ -391,7 +392,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TemeChangedComboBox.Enabled = false;
             this.TemeChangedComboBox.FormattingEnabled = true;
-            this.TemeChangedComboBox.Location = new System.Drawing.Point(231, 3);
+            this.TemeChangedComboBox.Location = new System.Drawing.Point(242, 3);
             this.TemeChangedComboBox.Name = "TemeChangedComboBox";
             this.TemeChangedComboBox.Size = new System.Drawing.Size(121, 21);
             this.TemeChangedComboBox.TabIndex = 3;
