@@ -50,12 +50,12 @@
             this.ChangePictureBox = new System.Windows.Forms.PictureBox();
             this.RightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.NoteNameLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.NoteCategoryLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TimeCreatedLabel = new System.Windows.Forms.Label();
             this.TimeChangedLabel = new System.Windows.Forms.Label();
             this.TimeCreatedComboBox = new System.Windows.Forms.ComboBox();
-            this.TemeChangedComboBox = new System.Windows.Forms.ComboBox();
+            this.TimeChangedComboBox = new System.Windows.Forms.ComboBox();
             this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.LeftTableLayoutPanel.SuspendLayout();
@@ -91,7 +91,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -107,19 +107,19 @@
             // addNoteToolStripMenuItem
             // 
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNoteToolStripMenuItem.Text = "Add Note";
             // 
             // editNoteToolStripMenuItem
             // 
             this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editNoteToolStripMenuItem.Text = "Edit Note";
             // 
             // removeNoteToolStripMenuItem
             // 
             this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeNoteToolStripMenuItem.Text = "Remove Note";
             // 
             // helpToolStripMenuItem
@@ -135,7 +135,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // TestButton
             // 
@@ -222,6 +222,7 @@
             this.NoteListBox.Name = "NoteListBox";
             this.NoteListBox.Size = new System.Drawing.Size(235, 342);
             this.NoteListBox.TabIndex = 1;
+            this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -290,7 +291,7 @@
             this.RightLayoutPanel.ColumnCount = 1;
             this.RightLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.RightLayoutPanel.Controls.Add(this.NoteNameLabel, 0, 0);
-            this.RightLayoutPanel.Controls.Add(this.label1, 0, 1);
+            this.RightLayoutPanel.Controls.Add(this.NoteCategoryLabel, 0, 1);
             this.RightLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 2);
             this.RightLayoutPanel.Controls.Add(this.NoteTextBox, 0, 3);
             this.RightLayoutPanel.Location = new System.Drawing.Point(259, 27);
@@ -316,18 +317,18 @@
             this.NoteNameLabel.Text = "label1";
             this.NoteNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label1
+            // NoteCategoryLabel
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteCategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(369, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NoteCategoryLabel.AutoSize = true;
+            this.NoteCategoryLabel.Location = new System.Drawing.Point(3, 43);
+            this.NoteCategoryLabel.Name = "NoteCategoryLabel";
+            this.NoteCategoryLabel.Size = new System.Drawing.Size(369, 32);
+            this.NoteCategoryLabel.TabIndex = 1;
+            this.NoteCategoryLabel.Text = "label1";
+            this.NoteCategoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel1
             // 
@@ -342,7 +343,7 @@
             this.tableLayoutPanel1.Controls.Add(this.TimeCreatedLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TimeChangedLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.TimeCreatedComboBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.TemeChangedComboBox, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TimeChangedComboBox, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 75);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -379,6 +380,7 @@
             // 
             this.TimeCreatedComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.TimeCreatedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TimeCreatedComboBox.Enabled = false;
             this.TimeCreatedComboBox.FormattingEnabled = true;
             this.TimeCreatedComboBox.Location = new System.Drawing.Point(53, 3);
@@ -386,16 +388,17 @@
             this.TimeCreatedComboBox.Size = new System.Drawing.Size(121, 21);
             this.TimeCreatedComboBox.TabIndex = 2;
             // 
-            // TemeChangedComboBox
+            // TimeChangedComboBox
             // 
-            this.TemeChangedComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TimeChangedComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TemeChangedComboBox.Enabled = false;
-            this.TemeChangedComboBox.FormattingEnabled = true;
-            this.TemeChangedComboBox.Location = new System.Drawing.Point(242, 3);
-            this.TemeChangedComboBox.Name = "TemeChangedComboBox";
-            this.TemeChangedComboBox.Size = new System.Drawing.Size(121, 21);
-            this.TemeChangedComboBox.TabIndex = 3;
+            this.TimeChangedComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TimeChangedComboBox.Enabled = false;
+            this.TimeChangedComboBox.FormattingEnabled = true;
+            this.TimeChangedComboBox.Location = new System.Drawing.Point(242, 3);
+            this.TimeChangedComboBox.Name = "TimeChangedComboBox";
+            this.TimeChangedComboBox.Size = new System.Drawing.Size(121, 21);
+            this.TimeChangedComboBox.TabIndex = 3;
             // 
             // NoteTextBox
             // 
@@ -459,12 +462,12 @@
         private System.Windows.Forms.ComboBox NoteCategoryComboBox;
         private System.Windows.Forms.TableLayoutPanel RightLayoutPanel;
         private System.Windows.Forms.Label NoteNameLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label NoteCategoryLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label TimeCreatedLabel;
         private System.Windows.Forms.Label TimeChangedLabel;
         private System.Windows.Forms.ComboBox TimeCreatedComboBox;
-        private System.Windows.Forms.ComboBox TemeChangedComboBox;
+        private System.Windows.Forms.ComboBox TimeChangedComboBox;
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.ListBox NoteListBox;
         private System.Windows.Forms.PictureBox AddPictureBox;

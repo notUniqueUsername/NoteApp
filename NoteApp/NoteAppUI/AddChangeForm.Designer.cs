@@ -41,7 +41,7 @@
             this.NoteNameTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.NoteCategoryLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
             this.RightLayoutPanel.SuspendLayout();
@@ -197,7 +197,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.NoteCategoryLabel, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.NoteCategoryComboBox, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 42);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -217,16 +217,16 @@
             this.NoteCategoryLabel.TabIndex = 0;
             this.NoteCategoryLabel.Text = "Категория";
             // 
-            // comboBox1
+            // NoteCategoryComboBox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteCategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(73, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(89, 21);
-            this.comboBox1.TabIndex = 1;
+            this.NoteCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NoteCategoryComboBox.FormattingEnabled = true;
+            this.NoteCategoryComboBox.Location = new System.Drawing.Point(73, 3);
+            this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
+            this.NoteCategoryComboBox.Size = new System.Drawing.Size(89, 21);
+            this.NoteCategoryComboBox.TabIndex = 1;
             // 
             // CancelButton
             // 
@@ -290,7 +290,7 @@
         private System.Windows.Forms.TextBox NoteNameTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label NoteCategoryLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox NoteCategoryComboBox;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button OkButton;
     }

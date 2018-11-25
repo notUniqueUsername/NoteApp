@@ -18,6 +18,11 @@ namespace NoteApp
             this.NoteList = NoteList;
         }
 
+        public Project()
+        {
+            this.NoteList = new List<Note>() ;
+        }
+
         public void AddNote(Note note)
         {
             NoteList.Add(note);
