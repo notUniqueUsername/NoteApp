@@ -93,6 +93,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -107,20 +108,23 @@
             // addNoteToolStripMenuItem
             // 
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.addNoteToolStripMenuItem.Text = "Add Note";
+            this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.Add_Click);
             // 
             // editNoteToolStripMenuItem
             // 
             this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.editNoteToolStripMenuItem.Text = "Edit Note";
+            this.editNoteToolStripMenuItem.Click += new System.EventHandler(this.ChangePictureBox_Click);
             // 
             // removeNoteToolStripMenuItem
             // 
             this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.removeNoteToolStripMenuItem.Text = "Remove Note";
+            this.removeNoteToolStripMenuItem.Click += new System.EventHandler(this.RemovePictureBox_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -133,7 +137,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -255,6 +259,7 @@
             this.RemovePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.RemovePictureBox.TabIndex = 7;
             this.RemovePictureBox.TabStop = false;
+            this.RemovePictureBox.Click += new System.EventHandler(this.RemovePictureBox_Click);
             // 
             // AddPictureBox
             // 
@@ -268,7 +273,7 @@
             this.AddPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AddPictureBox.TabIndex = 5;
             this.AddPictureBox.TabStop = false;
-            this.AddPictureBox.Click += new System.EventHandler(this.AddPictureBox_Click);
+            this.AddPictureBox.Click += new System.EventHandler(this.Add_Click);
             // 
             // ChangePictureBox
             // 
@@ -282,6 +287,7 @@
             this.ChangePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ChangePictureBox.TabIndex = 6;
             this.ChangePictureBox.TabStop = false;
+            this.ChangePictureBox.Click += new System.EventHandler(this.ChangePictureBox_Click);
             // 
             // RightLayoutPanel
             // 

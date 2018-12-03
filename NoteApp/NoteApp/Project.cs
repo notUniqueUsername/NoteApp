@@ -15,17 +15,48 @@ namespace NoteApp
 
         public Project(List<Note> NoteList)
         {
-            this.NoteList = NoteList;
+            if (NoteList == null)
+            {
+                throw new ArgumentNullException("Список заметок не может быть null");
+            }
+            else
+            {
+                this.NoteList = NoteList;
+            }
+            
         }
 
         public Project()
         {
-            this.NoteList = new List<Note>() ;
+            this.NoteList = new List<Note>();
         }
-
+        /// <summary>
+        /// Метод дляд обавления заметок
+        /// </summary>
+        /// <param name="note">
+        /// заметка
+        /// </param>
         public void AddNote(Note note)
         {
-            NoteList.Add(note);
+            if (NoteList == null)
+            {
+                throw new ArgumentNullException("Нельзя добавить null(Project.AddNote(null)) в список заметок");
+            }
+            else
+            {
+                NoteList.Add(note);
+            }
+            
+        }
+        /// <summary>
+        /// Удаление заметки по номеру индекса
+        /// </summary>
+        /// <param name="i">
+        /// индекс
+        /// </param>
+        public void RemoveNote(int i)
+        {
+            NoteList.RemoveAt(i);
         }
     }
 }

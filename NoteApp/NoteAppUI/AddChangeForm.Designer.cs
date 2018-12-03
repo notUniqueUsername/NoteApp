@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddChangeForm));
             this.RightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TimeCreatedLabel = new System.Windows.Forms.Label();
             this.TimeChangedLabel = new System.Windows.Forms.Label();
             this.TimeCreatedComboBox = new System.Windows.Forms.ComboBox();
-            this.TemeChangedComboBox = new System.Windows.Forms.ComboBox();
+            this.TimeChangedComboBox = new System.Windows.Forms.ComboBox();
             this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.NoteNameLabel = new System.Windows.Forms.Label();
@@ -84,7 +83,7 @@
             this.tableLayoutPanel1.Controls.Add(this.TimeCreatedLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TimeChangedLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.TimeCreatedComboBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.TemeChangedComboBox, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TimeChangedComboBox, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 78);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -101,9 +100,9 @@
             this.TimeCreatedLabel.AutoSize = true;
             this.TimeCreatedLabel.Location = new System.Drawing.Point(3, 0);
             this.TimeCreatedLabel.Name = "TimeCreatedLabel";
-            this.TimeCreatedLabel.Size = new System.Drawing.Size(35, 39);
+            this.TimeCreatedLabel.Size = new System.Drawing.Size(44, 39);
             this.TimeCreatedLabel.TabIndex = 0;
-            this.TimeCreatedLabel.Text = "label2";
+            this.TimeCreatedLabel.Text = "Created";
             // 
             // TimeChangedLabel
             // 
@@ -111,11 +110,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TimeChangedLabel.AutoSize = true;
-            this.TimeChangedLabel.Location = new System.Drawing.Point(305, 0);
+            this.TimeChangedLabel.Location = new System.Drawing.Point(304, 0);
             this.TimeChangedLabel.Name = "TimeChangedLabel";
-            this.TimeChangedLabel.Size = new System.Drawing.Size(35, 39);
+            this.TimeChangedLabel.Size = new System.Drawing.Size(47, 39);
             this.TimeChangedLabel.TabIndex = 1;
-            this.TimeChangedLabel.Text = "label2";
+            this.TimeChangedLabel.Text = "Modified";
             // 
             // TimeCreatedComboBox
             // 
@@ -123,21 +122,21 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TimeCreatedComboBox.Enabled = false;
             this.TimeCreatedComboBox.FormattingEnabled = true;
-            this.TimeCreatedComboBox.Location = new System.Drawing.Point(44, 3);
+            this.TimeCreatedComboBox.Location = new System.Drawing.Point(53, 3);
             this.TimeCreatedComboBox.Name = "TimeCreatedComboBox";
             this.TimeCreatedComboBox.Size = new System.Drawing.Size(121, 21);
             this.TimeCreatedComboBox.TabIndex = 2;
             // 
-            // TemeChangedComboBox
+            // TimeChangedComboBox
             // 
-            this.TemeChangedComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TimeChangedComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TemeChangedComboBox.Enabled = false;
-            this.TemeChangedComboBox.FormattingEnabled = true;
-            this.TemeChangedComboBox.Location = new System.Drawing.Point(346, 3);
-            this.TemeChangedComboBox.Name = "TemeChangedComboBox";
-            this.TemeChangedComboBox.Size = new System.Drawing.Size(121, 21);
-            this.TemeChangedComboBox.TabIndex = 3;
+            this.TimeChangedComboBox.Enabled = false;
+            this.TimeChangedComboBox.FormattingEnabled = true;
+            this.TimeChangedComboBox.Location = new System.Drawing.Point(357, 3);
+            this.TimeChangedComboBox.Name = "TimeChangedComboBox";
+            this.TimeChangedComboBox.Size = new System.Drawing.Size(121, 21);
+            this.TimeChangedComboBox.TabIndex = 3;
             // 
             // NoteTextBox
             // 
@@ -149,7 +148,6 @@
             this.NoteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.NoteTextBox.Size = new System.Drawing.Size(599, 409);
             this.NoteTextBox.TabIndex = 3;
-            this.NoteTextBox.Text = resources.GetString("NoteTextBox.Text");
             // 
             // tableLayoutPanel2
             // 
@@ -178,7 +176,7 @@
             this.NoteNameLabel.Name = "NoteNameLabel";
             this.NoteNameLabel.Size = new System.Drawing.Size(64, 33);
             this.NoteNameLabel.TabIndex = 0;
-            this.NoteNameLabel.Text = "Заголовок:";
+            this.NoteNameLabel.Text = "Note name:";
             this.NoteNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NoteNameTextBox
@@ -190,6 +188,8 @@
             this.NoteNameTextBox.Name = "NoteNameTextBox";
             this.NoteNameTextBox.Size = new System.Drawing.Size(523, 20);
             this.NoteNameTextBox.TabIndex = 1;
+            this.NoteNameTextBox.TextChanged += new System.EventHandler(this.NoteNameTextBox_TextChanged);
+            this.NoteNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NoteNameTextBox_KeyPress);
             // 
             // tableLayoutPanel3
             // 
@@ -215,7 +215,7 @@
             this.NoteCategoryLabel.Name = "NoteCategoryLabel";
             this.NoteCategoryLabel.Size = new System.Drawing.Size(64, 27);
             this.NoteCategoryLabel.TabIndex = 0;
-            this.NoteCategoryLabel.Text = "Категория";
+            this.NoteCategoryLabel.Text = "Category";
             // 
             // NoteCategoryComboBox
             // 
@@ -237,8 +237,9 @@
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 6;
-            this.CancelButton.Text = "Отмена";
+            this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // OkButton
             // 
@@ -249,7 +250,7 @@
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 7;
-            this.OkButton.Text = "Ок";
+            this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
@@ -283,7 +284,7 @@
         private System.Windows.Forms.Label TimeCreatedLabel;
         private System.Windows.Forms.Label TimeChangedLabel;
         private System.Windows.Forms.ComboBox TimeCreatedComboBox;
-        private System.Windows.Forms.ComboBox TemeChangedComboBox;
+        private System.Windows.Forms.ComboBox TimeChangedComboBox;
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label NoteNameLabel;

@@ -11,8 +11,19 @@ namespace NoteApp
     /// </summary>
     public class Note : ICloneable
     {
+        /// <summary>
+        /// Название
+        /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Категория
+        /// </summary>
         private NoteCategory _noteCategory;
+
+        /// <summary>
+        /// Текст
+        /// </summary>
         private string _noteText;
 
         /// <summary>
@@ -32,8 +43,17 @@ namespace NoteApp
         {
             set
             {
-                _name = value;
-                TimeChange = DateTime.Now;
+                if (value == "")
+                {
+                    _name = "Без названия";
+                    TimeChange = DateTime.Now;
+                }
+                else
+                {
+                    _name = value;
+                    TimeChange = DateTime.Now;
+                }
+
             }
 
             get
@@ -49,8 +69,15 @@ namespace NoteApp
         {
             set
             {
-                _noteCategory = value;
-                TimeChange = DateTime.Now;
+                if (Enum.TryParse<NoteCategory>(value.ToString(), out NoteCategory noteCategory))
+                {
+                    _noteCategory = value;
+                    TimeChange = DateTime.Now;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("В категории заметок отсутствует "+value.ToString());
+                }
             }
 
             get
@@ -102,7 +129,12 @@ namespace NoteApp
             this.NoteCategory = NoteCategory;
             this.NoteText = NoteText;
         }
-
+        /// <summary>
+        /// Копирование, неглубокое т.к. нет вложеных классов
+        /// </summary>
+        /// <returns>
+        /// Возвращается копия обьекта
+        /// </returns>
         public object Clone()
         {
             return (Note) this.MemberwiseClone();
