@@ -43,16 +43,16 @@ namespace NoteApp
         {
             set
             {
-                if (value.Length <= 50)
+                if (value.Trim().Length <= 50)
                 {
-                    if (value == "")
+                    if (value.Trim() == "")
                     {
                         _name = "Без названия";
                         TimeChange = DateTime.Now;
                     }
                     else
                     {
-                        _name = value;
+                        _name = value.Trim();
                         TimeChange = DateTime.Now;
                     }
                 }
@@ -92,7 +92,7 @@ namespace NoteApp
         {
             set
             {
-                _noteText = value;
+                _noteText = value.Trim();
                 TimeChange = DateTime.Now;
             }
 

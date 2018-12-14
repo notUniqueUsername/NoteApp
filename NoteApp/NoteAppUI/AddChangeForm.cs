@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NoteApp;
@@ -146,7 +147,7 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Происходит при нажатии клавиши прии ввое имени и запрещает ввод любых символоd кроме baackspace
+        /// Происходит при нажатии клавиши прии ввое имени и запрещает ввод любых символов кроме backspace
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
