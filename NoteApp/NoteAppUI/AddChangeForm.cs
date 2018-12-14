@@ -42,12 +42,10 @@ namespace NoteAppUI
             this.NoteNameTextBox.Text = note.Name;
             this.NoteCategoryLabel.Text = note.NoteCategory.ToString();
             this.NoteTextBox.Text = note.NoteText;
-            this.TimeCreatedComboBox.Items.Clear();
-            this.TimeCreatedComboBox.Items.Insert(0, note.TimeCreate.ToString());
-            this.TimeCreatedComboBox.SelectedIndex = 0;
-            this.TimeChangedComboBox.Items.Clear();
-            this.TimeChangedComboBox.Items.Insert(0, note.TimeChange.ToString());
-            this.TimeChangedComboBox.SelectedIndex = 0;
+            this.CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
+            this.ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
+            this.CreatedTimePicker.Value = note.TimeCreate;
+            this.ModifiedTimePicker.Value = note.TimeChange;
             Note = note;
             _changeORAdd = true;
         }

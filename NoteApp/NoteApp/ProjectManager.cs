@@ -15,18 +15,18 @@ namespace NoteApp
     public static class ProjectManager
     {
         /// <summary>
-        /// Константа с путем и именем фаила
-        /// </summary>
-        const string _file = @"C:\Users\User\Desktop\NoteApp.notes";
-        /// <summary>
         /// Запись в фаил
         /// </summary>
         /// <param name="data">
         /// Список записываемых заметок
         /// </param>
-        public static void SaveToFile(Project data)
+        public static void SaveToFile(Project data, string filePath = "Standart")
         {
-            using (StreamWriter file = File.CreateText(_file))
+            if (filePath == "Standart")
+            {
+                filePath = AppDomain.CurrentDomain.BaseDirectory.ToString()+ @"NoteApp.notes";
+            }
+            using (StreamWriter file = File.CreateText(filePath))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, data);
@@ -39,9 +39,13 @@ namespace NoteApp
         /// <returns>
         /// Список заметок
         /// </returns>
-        public static Project LoadFromFile()
+        public static Project LoadFromFile(string filePath = "Standart")
         {
-            using (StreamReader file = File.OpenText(_file))
+            if (filePath == "Standart")
+            {
+                filePath = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"NoteApp.notes";
+            }
+            using (StreamReader file = File.OpenText(filePath))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 return (Project)serializer.Deserialize(file, typeof(Project));

@@ -101,7 +101,8 @@
             this.MailLinkLabel.Size = new System.Drawing.Size(124, 13);
             this.MailLinkLabel.TabIndex = 6;
             this.MailLinkLabel.TabStop = true;
-            this.MailLinkLabel.Text = "muternatallia@gmial.com";
+            this.MailLinkLabel.Text = "muternatallia@gmail.com";
+            this.MailLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MailLinkLabel_LinkClicked);
             // 
             // GitHubLinkLabel
             // 
@@ -112,6 +113,7 @@
             this.GitHubLinkLabel.TabIndex = 7;
             this.GitHubLinkLabel.TabStop = true;
             this.GitHubLinkLabel.Text = "notUniqueUsername/NoteApp";
+            this.GitHubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GitHubLinkLabel_LinkClicked);
             // 
             // AboutForm
             // 

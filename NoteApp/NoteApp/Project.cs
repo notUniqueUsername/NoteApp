@@ -30,33 +30,5 @@ namespace NoteApp
         {
             this.NoteList = new List<Note>();
         }
-        /// <summary>
-        /// Метод дляд обавления заметок
-        /// </summary>
-        /// <param name="note">
-        /// заметка
-        /// </param>
-        public void AddNote(Note note)
-        {
-            if (NoteList == null)
-            {
-                throw new ArgumentNullException("Нельзя добавить null(Project.AddNote(null)) в список заметок");
-            }
-            else
-            {
-                NoteList.Add(note);
-            }
-            
-        }
-        /// <summary>
-        /// Удаление заметки по номеру индекса
-        /// </summary>
-        /// <param name="i">
-        /// индекс
-        /// </param>
-        public void RemoveNote(int i)
-        {
-            NoteList.RemoveAt(i);
-        }
     }
 }

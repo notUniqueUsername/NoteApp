@@ -43,17 +43,23 @@ namespace NoteApp
         {
             set
             {
-                if (value == "")
+                if (value.Length <= 50)
                 {
-                    _name = "Без названия";
-                    TimeChange = DateTime.Now;
+                    if (value == "")
+                    {
+                        _name = "Без названия";
+                        TimeChange = DateTime.Now;
+                    }
+                    else
+                    {
+                        _name = value;
+                        TimeChange = DateTime.Now;
+                    }
                 }
                 else
                 {
-                    _name = value;
-                    TimeChange = DateTime.Now;
+                    throw new ArgumentException("Название заметки длиннее 50 символов");
                 }
-
             }
 
             get
@@ -69,15 +75,8 @@ namespace NoteApp
         {
             set
             {
-                if (Enum.TryParse<NoteCategory>(value.ToString(), out NoteCategory noteCategory))
-                {
-                    _noteCategory = value;
-                    TimeChange = DateTime.Now;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("В категории заметок отсутствует "+value.ToString());
-                }
+                _noteCategory = value;
+                TimeChange = DateTime.Now;
             }
 
             get
@@ -115,17 +114,11 @@ namespace NoteApp
         /// <param name="Name">
         /// Имя заметки
         /// </param>
-        public Note(string NoteText, NoteCategory NoteCategory, string Name = "Без названия")
+        public Note(string NoteText, NoteCategory NoteCategory, 
+            string Name = "Без названия")
         {
             TimeCreate = DateTime.Now;
-            if (Name.Length <= 50)
-            {
-                this.Name = Name;
-            }
-            else
-            {
-                throw new ArgumentException("Название заметки длиннее 50 символов");
-            }
+            this.Name = Name;
             this.NoteCategory = NoteCategory;
             this.NoteText = NoteText;
         }
