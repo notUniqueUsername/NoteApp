@@ -17,13 +17,21 @@ namespace NoteAppUI
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Ссылка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/notUniqueUsername/NoteApp");
 
         }
-
+        /// <summary>
+        /// Email
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MailLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("Mailto:muternatallia@gmail.com");

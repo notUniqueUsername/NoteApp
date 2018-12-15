@@ -107,6 +107,11 @@ namespace NoteAppUI
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия кнопки Ок
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (_changeORAdd)
@@ -121,6 +126,11 @@ namespace NoteAppUI
             this.Close();
         }
 
+        /// <summary>
+        /// Обработка нажатия кнопки Cancel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

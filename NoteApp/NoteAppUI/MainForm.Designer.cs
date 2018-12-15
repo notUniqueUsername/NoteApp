@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,32 +40,32 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.NoteListBox = new System.Windows.Forms.ListBox();
-            this.RemovePictureBox = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.AddPictureBox = new System.Windows.Forms.PictureBox();
             this.ChangePictureBox = new System.Windows.Forms.PictureBox();
+            this.RemovePictureBox = new System.Windows.Forms.PictureBox();
+            this.NoteListBox = new System.Windows.Forms.ListBox();
             this.RightLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.NoteNameLabel = new System.Windows.Forms.Label();
-            this.NoteCategoryLabel = new System.Windows.Forms.Label();
-            this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.CreatedTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.ModifiedTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.CategoryLabel = new System.Windows.Forms.Label();
-            this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.NoteNameLabel = new System.Windows.Forms.Label();
+            this.NoteCategoryLabel = new System.Windows.Forms.Label();
+            this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.LeftTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RemovePictureBox)).BeginInit();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemovePictureBox)).BeginInit();
             this.RightLayoutPanel.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -137,14 +138,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.testToolStripMenuItem.Text = "test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.TestButton_Click);
             // 
@@ -167,35 +168,52 @@
             this.LeftTableLayoutPanel.Size = new System.Drawing.Size(253, 505);
             this.LeftTableLayoutPanel.TabIndex = 3;
             // 
-            // NoteListBox
+            // flowLayoutPanel2
             // 
-            this.NoteListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteListBox.FormattingEnabled = true;
-            this.NoteListBox.Items.AddRange(new object[] {
-            "test1",
-            "test2",
-            "test3",
-            "test4"});
-            this.NoteListBox.Location = new System.Drawing.Point(3, 35);
-            this.NoteListBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.NoteListBox.Name = "NoteListBox";
-            this.NoteListBox.Size = new System.Drawing.Size(247, 433);
-            this.NoteListBox.TabIndex = 1;
-            this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
+            this.flowLayoutPanel2.Controls.Add(this.CategoryLabel);
+            this.flowLayoutPanel2.Controls.Add(this.NoteCategoryComboBox);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(247, 26);
+            this.flowLayoutPanel2.TabIndex = 10;
             // 
-            // RemovePictureBox
+            // CategoryLabel
             // 
-            this.RemovePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemovePictureBox.Image = global::NoteAppUI.Properties.Resources.remove;
-            this.RemovePictureBox.Location = new System.Drawing.Point(59, 3);
-            this.RemovePictureBox.Name = "RemovePictureBox";
-            this.RemovePictureBox.Size = new System.Drawing.Size(22, 22);
-            this.RemovePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.RemovePictureBox.TabIndex = 7;
-            this.RemovePictureBox.TabStop = false;
-            this.RemovePictureBox.Click += new System.EventHandler(this.Remove_Click);
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(0, 6);
+            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(0, 6, 16, 0);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(49, 13);
+            this.CategoryLabel.TabIndex = 0;
+            this.CategoryLabel.Text = "Category";
+            // 
+            // NoteCategoryComboBox
+            // 
+            this.NoteCategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.NoteCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NoteCategoryComboBox.FormattingEnabled = true;
+            this.NoteCategoryComboBox.Location = new System.Drawing.Point(68, 3);
+            this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
+            this.NoteCategoryComboBox.Size = new System.Drawing.Size(89, 21);
+            this.NoteCategoryComboBox.TabIndex = 1;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.AddPictureBox);
+            this.flowLayoutPanel1.Controls.Add(this.ChangePictureBox);
+            this.flowLayoutPanel1.Controls.Add(this.RemovePictureBox);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 476);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(247, 26);
+            this.flowLayoutPanel1.TabIndex = 5;
             // 
             // AddPictureBox
             // 
@@ -221,6 +239,36 @@
             this.ChangePictureBox.TabStop = false;
             this.ChangePictureBox.Click += new System.EventHandler(this.Change_Click);
             // 
+            // RemovePictureBox
+            // 
+            this.RemovePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemovePictureBox.Image = global::NoteAppUI.Properties.Resources.remove;
+            this.RemovePictureBox.Location = new System.Drawing.Point(59, 3);
+            this.RemovePictureBox.Name = "RemovePictureBox";
+            this.RemovePictureBox.Size = new System.Drawing.Size(22, 22);
+            this.RemovePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.RemovePictureBox.TabIndex = 7;
+            this.RemovePictureBox.TabStop = false;
+            this.RemovePictureBox.Click += new System.EventHandler(this.Remove_Click);
+            // 
+            // NoteListBox
+            // 
+            this.NoteListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoteListBox.FormattingEnabled = true;
+            this.NoteListBox.Items.AddRange(new object[] {
+            "test1",
+            "test2",
+            "test3",
+            "test4"});
+            this.NoteListBox.Location = new System.Drawing.Point(3, 35);
+            this.NoteListBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.NoteListBox.Name = "NoteListBox";
+            this.NoteListBox.Size = new System.Drawing.Size(247, 433);
+            this.NoteListBox.TabIndex = 1;
+            this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
+            // 
             // RightLayoutPanel
             // 
             this.RightLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -241,45 +289,6 @@
             this.RightLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.RightLayoutPanel.Size = new System.Drawing.Size(600, 505);
             this.RightLayoutPanel.TabIndex = 4;
-            // 
-            // NoteNameLabel
-            // 
-            this.NoteNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteNameLabel.AutoSize = true;
-            this.NoteNameLabel.Location = new System.Drawing.Point(3, 0);
-            this.NoteNameLabel.Name = "NoteNameLabel";
-            this.NoteNameLabel.Size = new System.Drawing.Size(594, 50);
-            this.NoteNameLabel.TabIndex = 0;
-            this.NoteNameLabel.Text = "Здесь будет название выбраной заметки";
-            this.NoteNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // NoteCategoryLabel
-            // 
-            this.NoteCategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteCategoryLabel.AutoSize = true;
-            this.NoteCategoryLabel.Location = new System.Drawing.Point(3, 50);
-            this.NoteCategoryLabel.Name = "NoteCategoryLabel";
-            this.NoteCategoryLabel.Size = new System.Drawing.Size(594, 37);
-            this.NoteCategoryLabel.TabIndex = 1;
-            this.NoteCategoryLabel.Text = "Тут будет категория выбраной заметки";
-            this.NoteCategoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // NoteTextBox
-            // 
-            this.NoteTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.NoteTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.NoteTextBox.Location = new System.Drawing.Point(3, 127);
-            this.NoteTextBox.Multiline = true;
-            this.NoteTextBox.Name = "NoteTextBox";
-            this.NoteTextBox.ReadOnly = true;
-            this.NoteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.NoteTextBox.Size = new System.Drawing.Size(594, 375);
-            this.NoteTextBox.TabIndex = 3;
-            this.NoteTextBox.Text = "Поле для текста заметки";
             // 
             // flowLayoutPanel3
             // 
@@ -339,52 +348,44 @@
             this.ModifiedTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ModifiedTimePicker.TabIndex = 9;
             // 
-            // flowLayoutPanel1
+            // NoteNameLabel
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.AddPictureBox);
-            this.flowLayoutPanel1.Controls.Add(this.ChangePictureBox);
-            this.flowLayoutPanel1.Controls.Add(this.RemovePictureBox);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 476);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(247, 26);
-            this.flowLayoutPanel1.TabIndex = 5;
+            this.NoteNameLabel.AutoSize = true;
+            this.NoteNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.NoteNameLabel.Name = "NoteNameLabel";
+            this.NoteNameLabel.Size = new System.Drawing.Size(594, 50);
+            this.NoteNameLabel.TabIndex = 0;
+            this.NoteNameLabel.Text = "Здесь будет название выбраной заметки";
+            this.NoteNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // flowLayoutPanel2
+            // NoteCategoryLabel
             // 
-            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteCategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.Controls.Add(this.CategoryLabel);
-            this.flowLayoutPanel2.Controls.Add(this.NoteCategoryComboBox);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(247, 26);
-            this.flowLayoutPanel2.TabIndex = 10;
+            this.NoteCategoryLabel.AutoSize = true;
+            this.NoteCategoryLabel.Location = new System.Drawing.Point(3, 50);
+            this.NoteCategoryLabel.Name = "NoteCategoryLabel";
+            this.NoteCategoryLabel.Size = new System.Drawing.Size(594, 37);
+            this.NoteCategoryLabel.TabIndex = 1;
+            this.NoteCategoryLabel.Text = "Тут будет категория выбраной заметки";
+            this.NoteCategoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // CategoryLabel
+            // NoteTextBox
             // 
-            this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(0, 6);
-            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(0, 6, 16, 0);
-            this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(49, 13);
-            this.CategoryLabel.TabIndex = 0;
-            this.CategoryLabel.Text = "Category";
-            // 
-            // NoteCategoryComboBox
-            // 
-            this.NoteCategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.NoteCategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.NoteCategoryComboBox.FormattingEnabled = true;
-            this.NoteCategoryComboBox.Location = new System.Drawing.Point(68, 3);
-            this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
-            this.NoteCategoryComboBox.Size = new System.Drawing.Size(89, 21);
-            this.NoteCategoryComboBox.TabIndex = 1;
+            this.NoteTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NoteTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NoteTextBox.Location = new System.Drawing.Point(3, 127);
+            this.NoteTextBox.Multiline = true;
+            this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.ReadOnly = true;
+            this.NoteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.NoteTextBox.Size = new System.Drawing.Size(594, 375);
+            this.NoteTextBox.TabIndex = 3;
+            this.NoteTextBox.Text = "Поле для текста заметки";
             // 
             // MainForm
             // 
@@ -394,6 +395,7 @@
             this.Controls.Add(this.RightLayoutPanel);
             this.Controls.Add(this.LeftTableLayoutPanel);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(877, 573);
             this.Name = "MainForm";
@@ -403,16 +405,16 @@
             this.menuStrip1.PerformLayout();
             this.LeftTableLayoutPanel.ResumeLayout(false);
             this.LeftTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RemovePictureBox)).EndInit();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemovePictureBox)).EndInit();
             this.RightLayoutPanel.ResumeLayout(false);
             this.RightLayoutPanel.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

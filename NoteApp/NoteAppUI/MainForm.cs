@@ -36,7 +36,7 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Тестирование классов и сериализации
+        /// Тестирование
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
