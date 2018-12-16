@@ -23,6 +23,10 @@ namespace NoteAppUI
         {
             InitializeComponent();
             this.NoteCategoryComboBox.DataSource = Enum.GetNames(typeof(NoteCategory));
+            this.CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:mm";
+            this.ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:mm";
+            this.CreatedTimePicker.Value = DateTime.Now;
+            this.ModifiedTimePicker.Value = DateTime.Now;
         }
 
         private Note _note;
@@ -42,8 +46,6 @@ namespace NoteAppUI
                     this.NoteNameTextBox.Text = value.Name;
                     this.NoteCategoryLabel.Text = value.NoteCategory.ToString();
                     this.NoteTextBox.Text = value.NoteText;
-                    this.CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
-                    this.ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
                     this.CreatedTimePicker.Value = value.TimeCreate;
                     this.ModifiedTimePicker.Value = value.TimeChange;
                 }
@@ -52,43 +54,39 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Создание заметки
+        /// Изменение или создание заметки
         /// </summary>
-        private void CreateNote()
+        private void ChangeORCreateNote()
         {
             var name = this.NoteNameTextBox.Text;
             var text = this.NoteTextBox.Text;
             var noteCategory = this.NoteCategoryComboBox.SelectedIndex;
             if (name == "")
             {
-                var note = new Note(text, (NoteCategory)noteCategory);
-                Note = note;
+                if (Note != null)
+                {
+                    Note.NoteCategory = (NoteCategory)noteCategory;
+                    Note.NoteText = text;
+                }
+                else
+                {
+                    var note = new Note(text, (NoteCategory)noteCategory);
+                    Note = note;
+                }
             }
             else
             {
-                var note = new Note(text, (NoteCategory)noteCategory, name);
-                Note = note;
-            }
-        }
-
-        /// <summary>
-        /// Изменение заметки
-        /// </summary>
-        private void ChangeNote()
-        {
-            var name = this.NoteNameTextBox.Text;
-            var text = this.NoteTextBox.Text;
-            var noteCategory = this.NoteCategoryComboBox.SelectedIndex;
-            if (name == "")
-            {
-                Note.NoteCategory = (NoteCategory)noteCategory;
-                Note.NoteText = text;
-            }
-            else
-            {
-                Note.Name = name;
-                Note.NoteCategory = (NoteCategory)noteCategory;
-                Note.NoteText = text;
+                if (Note !=null)
+                {
+                    Note.Name = name;
+                    Note.NoteCategory = (NoteCategory)noteCategory;
+                    Note.NoteText = text;
+                }
+                else
+                {
+                    var note = new Note(text, (NoteCategory)noteCategory, name);
+                    Note = note;
+                }
             }
         }
 
@@ -99,7 +97,7 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void OkButton_Click(object sender, EventArgs e)
         {
-                CreateNote();
+                ChangeORCreateNote();
 
             DialogResult = DialogResult.OK;
             this.Close();
@@ -126,17 +124,12 @@ namespace NoteAppUI
             if (NoteNameTextBox.TextLength >= 50)
             {
                 var tooltip = new ToolTip();
-                NoteNameTextBox.BackColor = Color.Red;
                 tooltip.SetToolTip(this.NoteNameTextBox, "Максимальная длина 50 символов");
-            }
-            else
-            {
-                NoteNameTextBox.BackColor = Color.White;
             }
         }
 
         /// <summary>
-        /// Происходит при нажатии клавиши прии ввое имени и запрещает ввод любых символов кроме backspace
+        /// Происходит при нажатии клавиши при вводе имени и запрещает ввод любых символов кроме backspace
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

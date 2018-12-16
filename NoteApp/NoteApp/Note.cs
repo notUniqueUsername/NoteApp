@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,11 +30,13 @@ namespace NoteApp
         /// <summary>
         /// Время создания
         /// </summary>
+        [JsonProperty]
         public DateTime TimeCreate { private set; get; }
 
         /// <summary>
         /// Время последнего изменения
         /// </summary>
+        [JsonProperty]
         public DateTime TimeChange { private set; get; }
 
         /// <summary>
@@ -122,6 +125,8 @@ namespace NoteApp
             this.NoteCategory = NoteCategory;
             this.NoteText = NoteText;
         }
+
+
         /// <summary>
         /// Копирование, неглубокое т.к. нет вложеных классов
         /// </summary>

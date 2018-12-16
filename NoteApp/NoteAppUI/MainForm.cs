@@ -33,7 +33,9 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void TestButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Environment.CurrentDirectory + "|||" + AppDomain.CurrentDomain.BaseDirectory.ToString());
+            _project.NoteList.Add((Note)_project.NoteList[NoteListBox.SelectedIndex].Clone());
+            UpdateProject();
+            //MessageBox.Show(Environment.CurrentDirectory + "|||" + AppDomain.CurrentDomain.BaseDirectory.ToString());
             /*var note1 = new Note("text", NoteCategory.Different,"test");
             var note2 = new Note("text1", NoteCategory.Home);
             MessageBox.Show(note1.Name+' '+note1.NoteCategory+ ' ' + note1.NoteText+ ' ' + note1.TimeCreate);
@@ -115,10 +117,12 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void Change_Click(object sender, EventArgs e)
         {
-            var addChangeForm = new AddChangeForm();
-            addChangeForm.Note = _project.NoteList[NoteListBox.SelectedIndex];
-            addChangeForm.ShowDialog();
-            if (addChangeForm.DialogResult == DialogResult.OK)
+            var addChangeForm = new AddChangeForm
+            {
+                Note = _project.NoteList[NoteListBox.SelectedIndex]
+            };
+            //addChangeForm.ShowDialog();
+            if (addChangeForm.ShowDialog() == DialogResult.OK)
             {
                 _project.NoteList.RemoveAt(NoteListBox.SelectedIndex);
                 _project.NoteList.Add(addChangeForm.Note);
