@@ -53,10 +53,10 @@ namespace NoteApp
                     return (Project)serializer.Deserialize(file, typeof(Project));
                 }
             }
-            catch (FileNotFoundException)
+            catch (System.IO.FileNotFoundException)
             {
                 var project = new Project();
-                ProjectManager.SaveToFile(project);
+                ProjectManager.SaveToFile(project,filePath);
                 using (StreamReader file = File.OpenText(filePath))
                 {
                     JsonSerializer serializer = new JsonSerializer();
