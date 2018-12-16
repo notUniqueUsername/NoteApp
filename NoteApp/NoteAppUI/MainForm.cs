@@ -17,16 +17,7 @@ namespace NoteAppUI
         {
             InitializeComponent();
             this.NoteCategoryComboBox.DataSource = Enum.GetNames(typeof(NoteCategory));
-            try
-            {
-                _project = ProjectManager.LoadFromFile();
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                var project = new Project(); 
-                ProjectManager.SaveToFile(project);
-                _project = ProjectManager.LoadFromFile();
-            }
+            _project = ProjectManager.LoadFromFile();
             UpdateProject();
             if (this.NoteListBox.Items.Count != 0)
             {
@@ -124,7 +115,8 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void Change_Click(object sender, EventArgs e)
         {
-            var addChangeForm = new AddChangeForm(_project.NoteList[NoteListBox.SelectedIndex]);
+            var addChangeForm = new AddChangeForm();
+            addChangeForm.Note = _project.NoteList[NoteListBox.SelectedIndex];
             addChangeForm.ShowDialog();
             if (addChangeForm.DialogResult == DialogResult.OK)
             {

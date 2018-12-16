@@ -14,10 +14,7 @@ namespace NoteAppUI
 {
     public partial class AddChangeForm : Form
     {
-        /// <summary>
-        /// Переменная для определения что будет делать форма: изменять(true) или добавлять (false)
-        /// </summary>
-        private Boolean _changeORAdd;
+
 
         /// <summary>
         /// Конструктор для добавления заметки
@@ -26,29 +23,6 @@ namespace NoteAppUI
         {
             InitializeComponent();
             this.NoteCategoryComboBox.DataSource = Enum.GetNames(typeof(NoteCategory));
-            _changeORAdd = false;
-        }
-
-        /// <summary>
-        /// Конструктор для редактирования заметки
-        /// </summary>
-        /// <param name="note">
-        /// Редактируемая заметка
-        /// </param>
-        public AddChangeForm(Note note)
-        {
-            InitializeComponent();
-            this.NoteCategoryComboBox.DataSource = Enum.GetNames(typeof(NoteCategory));
-            this.NoteNameLabel.Text = "Note name:";
-            this.NoteNameTextBox.Text = note.Name;
-            this.NoteCategoryLabel.Text = note.NoteCategory.ToString();
-            this.NoteTextBox.Text = note.NoteText;
-            this.CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
-            this.ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
-            this.CreatedTimePicker.Value = note.TimeCreate;
-            this.ModifiedTimePicker.Value = note.TimeChange;
-            Note = note;
-            _changeORAdd = true;
         }
 
         private Note _note;
@@ -60,8 +34,19 @@ namespace NoteAppUI
                 return _note;
             }
 
-            private set
+            set
             {
+                if (value != null)
+                {
+                    this.NoteNameLabel.Text = "Note name:";
+                    this.NoteNameTextBox.Text = value.Name;
+                    this.NoteCategoryLabel.Text = value.NoteCategory.ToString();
+                    this.NoteTextBox.Text = value.NoteText;
+                    this.CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
+                    this.ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
+                    this.CreatedTimePicker.Value = value.TimeCreate;
+                    this.ModifiedTimePicker.Value = value.TimeChange;
+                }
                 _note = value;
             }
         }
@@ -114,14 +99,8 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (_changeORAdd)
-            {
-                ChangeNote();
-            }
-            else
-            {
                 CreateNote();
-            }
+
             DialogResult = DialogResult.OK;
             this.Close();
         }

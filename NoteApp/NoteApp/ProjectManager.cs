@@ -24,7 +24,7 @@ namespace NoteApp
         {
             if (filePath == "Standart")
             {
-                filePath = AppDomain.CurrentDomain.BaseDirectory.ToString()+ @"NoteApp.notes";
+                filePath = Environment.CurrentDirectory.ToString()+ @"\NoteApp.notes";
             }
             using (StreamWriter file = File.CreateText(filePath))
             {
@@ -45,10 +45,23 @@ namespace NoteApp
             {
                 filePath = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"NoteApp.notes";
             }
-            using (StreamReader file = File.OpenText(filePath))
+            try
             {
-                JsonSerializer serializer = new JsonSerializer();
-                return (Project)serializer.Deserialize(file, typeof(Project));
+                using (StreamReader file = File.OpenText(filePath))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    return (Project)serializer.Deserialize(file, typeof(Project));
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                var project = new Project();
+                ProjectManager.SaveToFile(project);
+                using (StreamReader file = File.OpenText(filePath))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    return (Project)serializer.Deserialize(file, typeof(Project));
+                }
             }
         }
     }
