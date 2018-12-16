@@ -60,8 +60,13 @@ namespace NoteApp.UnitTests
             TestName = "Тест десериализации если фаил не наиден")]
         public void TestProjectManagerLoadFromFile_FileNotFound(int listCount)
         {
+            if (File.Exists(Environment.CurrentDirectory.ToString() + @"\NoteForTest121.notes"))
+            {
+                File.Delete(Environment.CurrentDirectory.ToString() + @"\NoteForTest121.notes");
+            }
             var loadedProject = ProjectManager.LoadFromFile(Environment.CurrentDirectory.ToString() + @"\NoteForTest121.notes");
             Assert.AreEqual(listCount, loadedProject.NoteList.Count);
+            File.Delete(Environment.CurrentDirectory.ToString() + @"\NoteForTest121.notes");
         }
 
         /*[Test]
