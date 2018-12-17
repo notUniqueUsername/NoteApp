@@ -60,7 +60,8 @@ namespace NoteApp.UnitTests
         public void TestProjectConstructor_IncorrectValue(List<Note> testedValue)
         {
             Assert.Throws<ArgumentNullException>(
-                () => { new Project(testedValue); },                "Error");
+                () => { new Project(testedValue); },
+                "Error");
         }
     }
 }

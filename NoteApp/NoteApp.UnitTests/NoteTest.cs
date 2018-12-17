@@ -57,7 +57,8 @@ namespace NoteApp.UnitTests
         public void TestNameSet_IncorrectValue(string testedValue)
         {
             Assert.Throws<ArgumentException>(
-                () => { _note.Name = testedValue; },                "Error");
+                () => { _note.Name = testedValue; },
+                "Error");
         }
 
         [Test]
