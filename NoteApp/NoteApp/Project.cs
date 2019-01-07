@@ -117,6 +117,8 @@ namespace NoteApp
             
         }
 
+        public Note CurrentNote { set; get; }
+
         public Project()
         {
             this.NoteList = new List<Note>();

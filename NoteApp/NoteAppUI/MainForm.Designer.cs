@@ -272,11 +272,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoteListBox.FormattingEnabled = true;
-            this.NoteListBox.Items.AddRange(new object[] {
-            "test1",
-            "test2",
-            "test3",
-            "test4"});
             this.NoteListBox.Location = new System.Drawing.Point(3, 35);
             this.NoteListBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.NoteListBox.Name = "NoteListBox";

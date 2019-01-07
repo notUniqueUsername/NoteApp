@@ -24,10 +24,19 @@ namespace NoteAppUI
 
             _project = ProjectManager.LoadFromFile();
             _displayedProject = _project;
+            var currentNote = _project.CurrentNote;
             UpdateDisplayedProject();
+
+            int selectedIndex = 0;
+            if (currentNote != null)
+            {
+                selectedIndex = _project.NoteList.FindIndex(note => note.NoteText == currentNote.NoteText && note.TimeCreate == currentNote.TimeCreate);
+            }
+            
+
             if (this.NoteListBox.Items.Count != 0)
             {
-                this.NoteListBox.SelectedIndex = 0;
+                this.NoteListBox.SelectedIndex = selectedIndex;
             }
 
         }
@@ -116,13 +125,16 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.NoteNameLabel.Text = _project.NoteList[NoteListBox.SelectedIndex].Name;
-            this.NoteCategoryLabel.Text ="Category: " + _project.NoteList[NoteListBox.SelectedIndex].NoteCategory.ToString();
-            this.NoteTextBox.Text = _project.NoteList[NoteListBox.SelectedIndex].NoteText;
-            this.CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
-            this.ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
-            this.CreatedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeCreate;
-            this.ModifiedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeChange;
+            NoteNameLabel.Text = _project.NoteList[NoteListBox.SelectedIndex].Name;
+            NoteCategoryLabel.Text ="Category: " + _project.NoteList[NoteListBox.SelectedIndex].NoteCategory.ToString();
+            NoteTextBox.Text = _project.NoteList[NoteListBox.SelectedIndex].NoteText;
+            CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
+            ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
+            CreatedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeCreate;
+            ModifiedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeChange;
+
+            _project.CurrentNote = _project.NoteList[NoteListBox.SelectedIndex];
+            int s = 3;
         }
         /// <summary>
         /// Обработка вызова изменения заметки
