@@ -33,8 +33,10 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void TestButton_Click(object sender, EventArgs e)
         {
-            _project.NoteList.Add((Note)_project.NoteList[NoteListBox.SelectedIndex].Clone());
+            _project.SortProject();
             UpdateProject();
+            //_project.NoteList.Add((Note)_project.NoteList[NoteListBox.SelectedIndex].Clone());
+            //UpdateProject();
             //MessageBox.Show(Environment.CurrentDirectory + "|||" + AppDomain.CurrentDomain.BaseDirectory.ToString());
             /*var note1 = new Note("text", NoteCategory.Different,"test");
             var note2 = new Note("text1", NoteCategory.Home);
