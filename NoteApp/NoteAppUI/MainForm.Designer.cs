@@ -43,6 +43,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.NoteCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.PictureBoxSort = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.AddPictureBox = new System.Windows.Forms.PictureBox();
             this.ChangePictureBox = new System.Windows.Forms.PictureBox();
@@ -60,6 +61,7 @@
             this.menuStrip1.SuspendLayout();
             this.LeftTableLayoutPanel.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSort)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangePictureBox)).BeginInit();
@@ -175,6 +177,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel2.Controls.Add(this.CategoryLabel);
             this.flowLayoutPanel2.Controls.Add(this.NoteCategoryComboBox);
+            this.flowLayoutPanel2.Controls.Add(this.PictureBoxSort);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(247, 26);
@@ -200,6 +203,18 @@
             this.NoteCategoryComboBox.Name = "NoteCategoryComboBox";
             this.NoteCategoryComboBox.Size = new System.Drawing.Size(89, 21);
             this.NoteCategoryComboBox.TabIndex = 1;
+            this.NoteCategoryComboBox.SelectionChangeCommitted += new System.EventHandler(this.NoteCategoryComboBox_SelectionChangeCommitted);
+            // 
+            // PictureBoxSort
+            // 
+            this.PictureBoxSort.Image = global::NoteAppUI.Properties.Resources.sorting_arrows;
+            this.PictureBoxSort.Location = new System.Drawing.Point(163, 3);
+            this.PictureBoxSort.Name = "PictureBoxSort";
+            this.PictureBoxSort.Size = new System.Drawing.Size(22, 22);
+            this.PictureBoxSort.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxSort.TabIndex = 2;
+            this.PictureBoxSort.TabStop = false;
+            this.PictureBoxSort.Click += new System.EventHandler(this.PictureBoxSort_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -407,6 +422,7 @@
             this.LeftTableLayoutPanel.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSort)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AddPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChangePictureBox)).EndInit();
@@ -450,6 +466,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label CategoryLabel;
         private System.Windows.Forms.ComboBox NoteCategoryComboBox;
+        private System.Windows.Forms.PictureBox PictureBoxSort;
     }
 }
 

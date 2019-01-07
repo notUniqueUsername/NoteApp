@@ -74,7 +74,7 @@ namespace NoteApp
         }
 
 
-        public void SortProject()
+        public List<Note> SortProject()
         {
             if (NoteList.Count == 0)
             {
@@ -82,8 +82,9 @@ namespace NoteApp
             }
             if (NoteList.Count > 1)
             {
-                NoteList = QuickSort(NoteList,0 , NoteList.Count -1 );
+                return QuickSort(NoteList,0 , NoteList.Count -1 );
             }
+            return NoteList;
         }
 
         public List<Note> SortProject(NoteCategory noteCategory)
@@ -98,7 +99,7 @@ namespace NoteApp
             }
             if (resultList.Count > 0)
             {
-                resultList = QuickSort(NoteList, 0, NoteList.Count - 1);
+                resultList = QuickSort(resultList, 0, resultList.Count - 1);
             }
             return resultList;
         }

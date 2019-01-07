@@ -16,9 +16,15 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
-            this.NoteCategoryComboBox.DataSource = Enum.GetNames(typeof(NoteCategory));
+
+            var listDataForComboBox = new List<string>();
+            listDataForComboBox.Add("All");
+            listDataForComboBox.AddRange(Enum.GetNames(typeof(NoteCategory)));
+            this.NoteCategoryComboBox.DataSource = listDataForComboBox;
+
             _project = ProjectManager.LoadFromFile();
-            UpdateProject();
+            _displayedProject = _project;
+            UpdateDisplayedProject();
             if (this.NoteListBox.Items.Count != 0)
             {
                 this.NoteListBox.SelectedIndex = 0;
@@ -33,8 +39,8 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void TestButton_Click(object sender, EventArgs e)
         {
-            _project.SortProject();
-            UpdateProject();
+            _displayedProject = new Project(_project.SortProject());
+            UpdateDisplayedProject();
             //_project.NoteList.Add((Note)_project.NoteList[NoteListBox.SelectedIndex].Clone());
             //UpdateProject();
             //MessageBox.Show(Environment.CurrentDirectory + "|||" + AppDomain.CurrentDomain.BaseDirectory.ToString());
@@ -54,12 +60,12 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Обновление списка заметок
+        /// Обновление списка отображаемых заметок
         /// </summary>
-        private void UpdateProject()
+        private void UpdateDisplayedProject()
         {
             var List = new List<string>();
-            foreach (var item in _project.NoteList)
+            foreach (var item in _displayedProject.NoteList)
             {
                 List.Add(item.Name);
             }
@@ -67,9 +73,14 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Для хранение списка проектов внутри формы
+        /// Для хранение списка заметок внутри формы
         /// </summary>
         private Project _project;
+
+        /// <summary>
+        /// Для хранения отображаемых заметок
+        /// </summary>
+        private Project _displayedProject;
 
         /// <summary>
         /// Вызов формы для добавления заметки
@@ -83,7 +94,8 @@ namespace NoteAppUI
             if (addChangeForm.DialogResult == DialogResult.OK)
             {
                 _project.NoteList.Add(addChangeForm.Note);
-                UpdateProject();
+                _displayedProject = _project;
+                UpdateDisplayedProject();
             }
         }
 
@@ -123,12 +135,12 @@ namespace NoteAppUI
             {
                 Note = _project.NoteList[NoteListBox.SelectedIndex]
             };
-            //addChangeForm.ShowDialog();
             if (addChangeForm.ShowDialog() == DialogResult.OK)
             {
                 _project.NoteList.RemoveAt(NoteListBox.SelectedIndex);
                 _project.NoteList.Add(addChangeForm.Note);
-                UpdateProject();
+                _displayedProject = _project;
+                UpdateDisplayedProject();
             }
             
         }
@@ -143,7 +155,8 @@ namespace NoteAppUI
             if (dialogResult == DialogResult.OK)
             {
                 _project.NoteList.RemoveAt(NoteListBox.SelectedIndex);
-                UpdateProject();
+                _displayedProject = _project;
+                UpdateDisplayedProject();
             }
         }
 
@@ -165,6 +178,29 @@ namespace NoteAppUI
         private void MainClose(object sender, FormClosingEventArgs e)
         {
             ProjectManager.SaveToFile(_project);
+        }
+
+        private void NoteCategoryComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var selectedValue = NoteCategoryComboBox.SelectedValue.ToString();
+            if (selectedValue == "All")
+            {
+                _displayedProject = _project;
+                this.UpdateDisplayedProject();
+            }
+            else
+            {
+                Enum.TryParse(selectedValue, out NoteCategory noteCategory);
+                _displayedProject = new Project(_project.SortProject(noteCategory));
+                this.UpdateDisplayedProject();
+            }
+
+        }
+
+        private void PictureBoxSort_Click(object sender, EventArgs e)
+        {
+            _displayedProject = new Project(_project.SortProject());
+            UpdateDisplayedProject();
         }
     }
 }

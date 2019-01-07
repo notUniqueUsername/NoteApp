@@ -115,5 +115,8 @@
   <ItemGroup>
     <None Include="Resources\remove.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sorting-arrows.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
