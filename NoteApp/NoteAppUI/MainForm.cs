@@ -16,7 +16,6 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
-
             var listDataForComboBox = new List<string>();
             listDataForComboBox.Add("All");
             listDataForComboBox.AddRange(Enum.GetNames(typeof(NoteCategory)));
@@ -134,7 +133,6 @@ namespace NoteAppUI
             ModifiedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeChange;
 
             _project.CurrentNote = _project.NoteList[NoteListBox.SelectedIndex];
-            int s = 3;
         }
         /// <summary>
         /// Обработка вызова изменения заметки
@@ -213,6 +211,20 @@ namespace NoteAppUI
         {
             _displayedProject = new Project(_project.SortProject());
             UpdateDisplayedProject();
+        }
+
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить выделеную заметку?", "Подтверждение", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    _project.NoteList.RemoveAt(NoteListBox.SelectedIndex);
+                    _displayedProject = _project;
+                    UpdateDisplayedProject();
+                }
+            }
         }
     }
 }

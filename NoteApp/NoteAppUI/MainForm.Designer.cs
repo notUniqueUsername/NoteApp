@@ -406,11 +406,13 @@
             this.Controls.Add(this.LeftTableLayoutPanel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(877, 573);
             this.Name = "MainForm";
             this.Text = "NoteApp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainClose);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.LeftTableLayoutPanel.ResumeLayout(false);
