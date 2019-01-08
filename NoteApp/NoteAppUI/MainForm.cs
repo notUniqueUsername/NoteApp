@@ -217,13 +217,7 @@ namespace NoteAppUI
         {
             if (e.KeyCode == Keys.Delete)
             {
-                DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить выделеную заметку?", "Подтверждение", MessageBoxButtons.OKCancel);
-                if (dialogResult == DialogResult.OK)
-                {
-                    _project.NoteList.RemoveAt(NoteListBox.SelectedIndex);
-                    _displayedProject = _project;
-                    UpdateDisplayedProject();
-                }
+                Remove_Click(sender, e);
             }
         }
     }
