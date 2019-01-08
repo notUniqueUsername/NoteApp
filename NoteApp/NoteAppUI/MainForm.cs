@@ -15,6 +15,7 @@ namespace NoteAppUI
     {
         public MainForm()
         {
+
             InitializeComponent();
             var listDataForComboBox = new List<string>();
             listDataForComboBox.Add("All");
@@ -25,7 +26,9 @@ namespace NoteAppUI
             _displayedProject = _project;
             var currentNote = _project.CurrentNote;
             UpdateDisplayedProject();
-
+            #if !DEBUG
+                testToolStripMenuItem.Visible = false;
+            #endif
             int selectedIndex = 0;
             if (currentNote != null)
             {
@@ -41,7 +44,7 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Тестирование
+        /// Тестирование есть только в дебаге
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -49,22 +52,6 @@ namespace NoteAppUI
         {
             _displayedProject = new Project(_project.SortProject());
             UpdateDisplayedProject();
-            //_project.NoteList.Add((Note)_project.NoteList[NoteListBox.SelectedIndex].Clone());
-            //UpdateProject();
-            //MessageBox.Show(Environment.CurrentDirectory + "|||" + AppDomain.CurrentDomain.BaseDirectory.ToString());
-            /*var note1 = new Note("text", NoteCategory.Different,"test");
-            var note2 = new Note("text1", NoteCategory.Home);
-            MessageBox.Show(note1.Name+' '+note1.NoteCategory+ ' ' + note1.NoteText+ ' ' + note1.TimeCreate);
-            MessageBox.Show(note2.Name + ' ' + note2.NoteCategory + ' ' + note2.NoteText + ' ' + note2.TimeCreate);
-            var project1 = new Project();
-            project1.AddNote(note1);
-            project1.AddNote(note2);
-            ProjectManager.SaveToFile(project1);
-            var loadProject =  ProjectManager.LoadFromFile();
-            foreach (var item in loadProject.NoteList)
-            {
-                MessageBox.Show(item.Name + ' ' + item.NoteCategory + ' ' + item.NoteText + ' ' + item.TimeCreate);
-            }*/
         }
 
         /// <summary>
