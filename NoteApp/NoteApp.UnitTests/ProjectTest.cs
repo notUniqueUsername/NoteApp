@@ -66,7 +66,7 @@ namespace NoteApp.UnitTests
 
         [Test]
         [TestCase(
-            TestName = "Проверка Sort при 0 элементов")]
+            TestName = "Проверка сортировки Project при 0 элементов")]
         public void TestProjectSort_0_elements()
         {
             var project = new Project();
