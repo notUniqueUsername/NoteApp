@@ -56,12 +56,51 @@ namespace NoteApp.UnitTests
 
         [Test]
         [TestCase(null,
-            TestName = "проверка конструктора на null")]
+            TestName = "Проверка конструктора на null")]
         public void TestProjectConstructor_IncorrectValue(List<Note> testedValue)
         {
             Assert.Throws<ArgumentNullException>(
                 () => { new Project(testedValue); },
                 "Error");
         }
+
+        [Test]
+        [TestCase(
+            TestName = "Проверка Sort при 0 элементов")]
+        public void TestProjectSort_0_elements()
+        {
+            var project = new Project();
+            Assert.Throws<IndexOutOfRangeException>(
+                () => { project.SortProject(); },
+                "Error");
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Тест cортировки Project")]
+        public void TestProjectSort()
+        {
+            var project1 = new Project();
+            _project.NoteList.Add(new Note("some text", NoteCategory.Different, "some name"));
+            _project.NoteList[1].Name = "test";
+            var expectedProject = new Project();
+            for (int i = 1; i > -1; i--)
+            {
+                expectedProject.NoteList.Add(_project.NoteList[i]);
+            }
+            project1 = new Project(_project.SortProject());
+            Assert.AreEqual(expectedProject.NoteList, project1.NoteList);
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Тест cортировки Project при одном элементе")]
+        public void TestProjectSort_1_element()
+        {
+            var expectedProject = new Project();
+            expectedProject = new Project(_project.SortProject());
+            Assert.AreEqual(expectedProject.NoteList, _project.NoteList);
+        }
+
     }
 }

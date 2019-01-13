@@ -88,7 +88,7 @@ namespace NoteAppUI
             addChangeForm.ShowDialog();
             if (addChangeForm.DialogResult == DialogResult.OK)
             {
-                _project.NoteList.Add(addChangeForm.Note);
+                _project.NoteList.Insert(0,addChangeForm.Note);
                 _displayedProject = _project;
                 UpdateDisplayedProject();
             }
@@ -135,7 +135,7 @@ namespace NoteAppUI
             if (addChangeForm.ShowDialog() == DialogResult.OK)
             {
                 _project.NoteList.RemoveAt(NoteListBox.SelectedIndex);
-                _project.NoteList.Add(addChangeForm.Note);
+                _project.NoteList.Insert(0,addChangeForm.Note);
                 _displayedProject = _project;
                 UpdateDisplayedProject();
             }
