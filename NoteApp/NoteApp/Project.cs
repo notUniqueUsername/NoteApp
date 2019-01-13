@@ -89,6 +89,10 @@ namespace NoteApp
 
         public List<Note> SortProject(NoteCategory noteCategory)
         {
+            if (NoteList.Count == 0)
+            {
+                throw new IndexOutOfRangeException("Проект не содержит заметок");
+            }
             List<Note> resultList = new List<Note>();
             foreach (var note in NoteList)
             {
@@ -97,7 +101,7 @@ namespace NoteApp
                     resultList.Add(note);
                 }
             }
-            if (resultList.Count > 0)
+            if (resultList.Count > 1)
             {
                 resultList = QuickSort(resultList, 0, resultList.Count - 1);
             }
@@ -117,7 +121,26 @@ namespace NoteApp
             
         }
 
-        public Note CurrentNote { set; get; }
+        private Note _currentNote;
+
+        public Note CurrentNote
+        {
+            set
+            {
+                if (!NoteList.Exists(x=> x.TimeCreate == value.TimeCreate) && value !=null)
+                {
+                    throw new ArgumentException("Текущая заметка должна быть в списке заметок проекта");
+                }
+                else
+                {
+                    _currentNote = value; 
+                }
+            }
+            get
+            {
+                return _currentNote;
+            }
+        }
 
         public Project()
         {

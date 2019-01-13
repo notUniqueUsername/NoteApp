@@ -102,5 +102,68 @@ namespace NoteApp.UnitTests
             Assert.AreEqual(expectedProject.NoteList, _project.NoteList);
         }
 
+        [Test]
+        [TestCase(
+            TestName = "Проверка Sort c категорией при 0 элементов")]
+        public void TestProjectSortWithCategory_0_elements()
+        {
+            var project = new Project();
+            Assert.Throws<IndexOutOfRangeException>(
+                () => { project.SortProject(); },
+                "Error");
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Проверка Sort с категорией при 1 элементе")]
+        public void TestProjectSortWithCategory_1_elements()
+        {
+            var expectedProject = new Project();
+            expectedProject = new Project(_project.SortProject(NoteCategory.Different));
+            Assert.AreEqual(expectedProject.NoteList, _project.NoteList);
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Проверка Sort с категорией")]
+        public void TestProjectSortWithCategory()
+        {
+            var project1 = new Project();
+            _project.NoteList.Add(new Note("some text", NoteCategory.HealthAndSport, "some name"));
+            _project.NoteList[1].Name = "test";
+            var expectedProject = new Project();
+            expectedProject.NoteList.Add(_project.NoteList[1]);
+            project1 = new Project(_project.SortProject(NoteCategory.HealthAndSport));
+            Assert.AreEqual(expectedProject.NoteList, project1.NoteList);
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Проверка свойства CurrentNote get")]
+        public void TestProjectCurrentNoteGet()
+        {
+            _project.CurrentNote = _project.NoteList[0];
+            Note currentNote = _project.CurrentNote;
+            Assert.AreEqual(_project.NoteList[0], currentNote);
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Проверка свойства CurrentNote set на некорректное значение")]
+        public void TestProjectCurrentNoteSetNotCorrect()
+        {
+            Assert.Throws<ArgumentException>(
+                () => { _project.CurrentNote = new Note("some text11", NoteCategory.Home, "some name11"); },
+                "Error");
+        }
+
+        [Test]
+        [TestCase(
+            TestName = "Проверка свойства CurrentNote set на корректное значение")]
+        public void TestProjectCurrentNoteSetCorrect()
+        {
+            _project.CurrentNote = _project.NoteList[0];
+            Assert.AreEqual(_project.NoteList[0], _project.CurrentNote);
+        }
     }
 }

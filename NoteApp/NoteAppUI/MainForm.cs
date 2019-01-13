@@ -32,7 +32,7 @@ namespace NoteAppUI
             int selectedIndex = 0;
             if (currentNote != null)
             {
-                selectedIndex = _project.NoteList.FindIndex(note => note.NoteText == currentNote.NoteText && note.TimeCreate == currentNote.TimeCreate);
+                selectedIndex = _project.NoteList.FindIndex(note => note.TimeCreate == currentNote.TimeCreate);
             }
             
 
@@ -205,6 +205,10 @@ namespace NoteAppUI
             if (e.KeyCode == Keys.Delete)
             {
                 Remove_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                AboutToolStripMenuItem_Click(sender,e);
             }
         }
     }
