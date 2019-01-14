@@ -49,8 +49,15 @@ namespace NoteAppUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TestButton_Click(object sender, EventArgs e)
-        {
-            _displayedProject = new Project(_project.SortProject());
+        {   NoteCategory noteCategory;
+            for (int i = 0; i < 201; i++)
+            {
+                int k = i % 6;
+                string text= "some text " + i.ToString();
+                string name = "some name " + i.ToString();
+                Enum.TryParse<NoteCategory>(k.ToString(),out noteCategory);
+                _project.NoteList.Add(new Note(text,noteCategory,name));
+            }
             UpdateDisplayedProject();
         }
 
@@ -111,15 +118,15 @@ namespace NoteAppUI
         /// <param name="e"></param>
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            NoteNameLabel.Text = _project.NoteList[NoteListBox.SelectedIndex].Name;
-            NoteCategoryLabel.Text ="Category: " + _project.NoteList[NoteListBox.SelectedIndex].NoteCategory.ToString();
-            NoteTextBox.Text = _project.NoteList[NoteListBox.SelectedIndex].NoteText;
+            NoteNameLabel.Text = _displayedProject.NoteList[NoteListBox.SelectedIndex].Name;
+            NoteCategoryLabel.Text ="Category: " + _displayedProject.NoteList[NoteListBox.SelectedIndex].NoteCategory.ToString();
+            NoteTextBox.Text = _displayedProject.NoteList[NoteListBox.SelectedIndex].NoteText;
             CreatedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
             ModifiedTimePicker.CustomFormat = "dd.MM.yyyy - H:m";
-            CreatedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeCreate;
-            ModifiedTimePicker.Value = _project.NoteList[NoteListBox.SelectedIndex].TimeChange;
+            CreatedTimePicker.Value = _displayedProject.NoteList[NoteListBox.SelectedIndex].TimeCreate;
+            ModifiedTimePicker.Value = _displayedProject.NoteList[NoteListBox.SelectedIndex].TimeChange;
 
-            _project.CurrentNote = _project.NoteList[NoteListBox.SelectedIndex];
+            _project.CurrentNote = _displayedProject.NoteList[NoteListBox.SelectedIndex];
         }
         /// <summary>
         /// Обработка вызова изменения заметки
@@ -190,6 +197,7 @@ namespace NoteAppUI
                 Enum.TryParse(selectedValue, out NoteCategory noteCategory);
                 _displayedProject = new Project(_project.SortProject(noteCategory));
                 this.UpdateDisplayedProject();
+
             }
 
         }
